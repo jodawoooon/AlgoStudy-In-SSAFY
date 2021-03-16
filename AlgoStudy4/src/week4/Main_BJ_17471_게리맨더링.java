@@ -61,7 +61,7 @@ public class Main_BJ_17471_게리맨더링 {
 	}
 	private static void subset(int cnt) {
 		
-		if(cnt==N) {
+		if(cnt==N+1) {
 //			System.out.println(teamNum);
 //			System.out.println(Arrays.toString(tgt));
 //			
