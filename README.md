@@ -40,3 +40,12 @@
 | BOJ | 17070 | [파이프 옮기기 1](https://www.acmicpc.net/problem/17070) | gold5 |
 | BOJ | 17471 | [게리맨더링](https://www.acmicpc.net/problem/17471) | gold5 |
 | BOJ | 17472 | [다리 만들기 2](https://www.acmicpc.net/problem/17472) | gold2 |
+
+
+## week 5
+| Type | 문제 | 제목 | lank |
+| -- |--| -- |--|
+| BOJ | 14889 | [스타트와 링크](https://www.acmicpc.net/problem/14889) | silver3 |
+| BOJ | 15685 | [드래곤 커브](https://www.acmicpc.net/problem/15685) | gold4 |
+| BOJ | 16234 | [인구 이동](https://www.acmicpc.net/problem/16234) | gold5 |
+| BOJ | 20056 | [마법사 상어와 파이어볼](https://www.acmicpc.net/problem/20056) | gold5 |
