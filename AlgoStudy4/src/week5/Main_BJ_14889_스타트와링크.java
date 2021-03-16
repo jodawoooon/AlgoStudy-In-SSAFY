@@ -45,36 +45,23 @@ public class Main_BJ_14889_스타트와링크 {
 		//먼저 조합으로 팀을 나누고
 		//능력치 구하기
 		select = new boolean[N+1];
-		comb(0,1,new ArrayList<>(),new ArrayList<>());
+		comb(0,1);
 		System.out.println(min);
 	}
 	
 	
-	private static void comb(int cnt, int k, ArrayList start, ArrayList link) {
+	private static void comb(int cnt, int k) {
 		if(cnt==N/2) {
-			//능력치 구하는 함수 호출
-			for (int i = 1; i <= N; i++) {
-				if(select[i]) {
-					start.add(i);
-				}else {
-					link.add(i);
-				}
-			}
-			
-			solve(start,link);
-			
-//			System.out.println("st: " +Arrays.toString(start.toArray()));
-//			System.out.println("li: " +Arrays.toString(link.toArray()));
-			
-			start.clear();
-			link.clear();
+
+			solve();
+
 			return;
 		}
 		
 		for (int i = k; i <= N; i++) {
 			if(!select[i]) {
 				select[i] = true;
-				comb(cnt+1,i+1,start,link);
+				comb(cnt+1,i+1);
 				select[i] = false;
 			}
 			
@@ -83,34 +70,29 @@ public class Main_BJ_14889_스타트와링크 {
 	}
 
 
-	private static void solve(ArrayList<Integer> st, ArrayList<Integer> li) {
+	private static void solve() {
 		int startSum = 0;
 		int linkSum = 0;
 		boolean[][] visited = new boolean[N+1][N+1];
 		
 		for (int i = 1; i <= N; i++) {
-			for (int j = 1; j <= N; j++) {
-				if(!visited[i][j]&&!visited[j][i]&&st.contains(i)&&st.contains(j)&&i!=j) {
+			for (int j = i+1; j <= N; j++) {
+				if(!visited[i][j]&&select[i]&&select[j]) {
 					startSum += S[i][j];
 					startSum += S[j][i];
 					visited[i][j] = true;
-					visited[j][i] = true;
+					
+					
+				}else if(!visited[i][j]&&!select[i]&&!select[j]){
+					linkSum += S[i][j];
+					linkSum += S[j][i];
+					visited[i][j] = true;
+					
 					
 				}
 			}
 		}
-		visited = new boolean[N+1][N+1];
-		for (int i = 1; i <= N; i++) {
-			for (int j = 1; j <= N; j++) {
-				if(!visited[i][j]&&!visited[j][i]&&li.contains(i)&&li.contains(j)&&i!=j) {
-					//System.out.println(S[i][j]+" "+S[j][i]);
-					linkSum += S[i][j];
-					linkSum += S[j][i];
-					visited[i][j] = true;
-					visited[j][i] = true;
-				}
-			}
-		}
+
 		//System.out.println("stSum:"+startSum+" liSum"+linkSum);
 		min = Math.min(min, Math.abs(startSum-linkSum));
 	}
