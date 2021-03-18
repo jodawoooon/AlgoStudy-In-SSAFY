@@ -59,12 +59,9 @@ public class Main_BJ_14889_스타트와링크 {
 		}
 		
 		for (int i = k; i <= N; i++) {
-			if(!select[i]) {
-				select[i] = true;
-				comb(cnt+1,i+1);
-				select[i] = false;
-			}
-			
+			select[i] = true;
+			comb(cnt+1,i+1);
+			select[i] = false;	
 		}
 		
 	}
@@ -73,22 +70,14 @@ public class Main_BJ_14889_스타트와링크 {
 	private static void solve() {
 		int startSum = 0;
 		int linkSum = 0;
-		boolean[][] visited = new boolean[N+1][N+1];
-		
+
 		for (int i = 1; i <= N; i++) {
-			for (int j = i+1; j <= N; j++) {
-				if(!visited[i][j]&&select[i]&&select[j]) {
+			for (int j = 1; j <= N; j++) {
+				if(select[i]&&select[j]) {
 					startSum += S[i][j];
-					startSum += S[j][i];
-					visited[i][j] = true;
-					
-					
-				}else if(!visited[i][j]&&!select[i]&&!select[j]){
+				}
+				if(!select[i]&&!select[j]){
 					linkSum += S[i][j];
-					linkSum += S[j][i];
-					visited[i][j] = true;
-					
-					
 				}
 			}
 		}
