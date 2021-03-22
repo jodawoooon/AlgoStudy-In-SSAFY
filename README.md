@@ -49,3 +49,12 @@
 | BOJ | 15685 | [드래곤 커브](https://www.acmicpc.net/problem/15685) | gold4 |
 | BOJ | 16234 | [인구 이동](https://www.acmicpc.net/problem/16234) | gold5 |
 | BOJ | 20056 | [마법사 상어와 파이어볼](https://www.acmicpc.net/problem/20056) | gold5 |
+
+
+## week 6
+| Type | 문제 | 제목 | lank |
+| -- |--| -- |--|
+| BOJ | 12763 | [지각하면 안 돼](https://www.acmicpc.net/problem/12763) | gold2 |
+| BOJ | 6497 | [전력난](https://www.acmicpc.net/problem/6497) | gold4 |
+
+
