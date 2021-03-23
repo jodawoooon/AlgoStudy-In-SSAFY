@@ -56,5 +56,6 @@
 | -- |--| -- |--|
 | BOJ | 12763 | [지각하면 안 돼](https://www.acmicpc.net/problem/12763) | gold2 |
 | BOJ | 6497 | [전력난](https://www.acmicpc.net/problem/6497) | gold4 |
-
+| BOJ | 1238 | [파티](https://www.acmicpc.net/problem/1238) | gold3 |
+| BOJ | 9694 | [무엇을 아느냐가 아니라 누구를 아느냐가 문제다](https://www.acmicpc.net/problem/9694) | gold4 |
 
