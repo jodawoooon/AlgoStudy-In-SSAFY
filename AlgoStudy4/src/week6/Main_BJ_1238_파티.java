@@ -48,6 +48,7 @@ public class Main_BJ_1238_파티 {
 				
 				for(int j=1; j<=N; ++j) {
 					if(map[k][j]>=Integer.MAX_VALUE) continue;//가지치기
+					if(i==j || k==j) continue;
 					////경유지 들러서 가는게 더 빠르면
 					map[i][j] = Math.min(map[i][j], map[i][k]+map[k][j]);
 				}
