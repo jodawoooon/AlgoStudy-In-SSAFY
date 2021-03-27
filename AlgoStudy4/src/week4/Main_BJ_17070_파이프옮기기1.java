@@ -31,10 +31,22 @@ public class Main_BJ_17070_파이프옮기기1 {
 	 * 대각선 이동시 => 우,하, 우하 검사
 	 * 
 	 * 
-	 * 파이프의 위치를 체크하기. boolean?
 	 * 
 	 * (1,1)-(1,2)의 파이프의 한쪽끝은 (N,N)으로 이동시키는 방법의 개수. => BFS
 	 */
+	
+	
+/*	처음에는 BFS로 풀었으나 계속 시간초과가 나왔습니다. 
+ * 
+ * 최대한 코드를 고쳐보려 했으나 해결하기 어려울 것 같아서 같은 로직을 큐를 버리고 재귀로 구현했더니 통과할 수 있었습니다...
+
+	0:가로, 1:세로, 2:대각선으로 상태를 두고
+	가로 => 가로 or 대각선
+	세로 => 세로 or 대각선
+	대각선 => 가로 or 세로 or 대각선으로 이동할 수 있으므로
+	해당 조건에 맞게 검사하며 파이프를 이동시켰습니다.
+
+	메모리 : 15348kb  /	 시간 : 264ms*/
 	
 	static int N, arr[][], cnt;
 	static int dr[] = {0,1,1};//우 하 우하
@@ -54,83 +66,43 @@ public class Main_BJ_17070_파이프옮기기1 {
 			}
 		}
 
-		bfs(1,2);
+		solve(1,2,0);
 		System.out.println(cnt);
 	}
-	
-	private static void bfs(int i, int j) {
-		Queue<Pipe> queue = new LinkedList<>();
-		queue.add(new Pipe(i,j,0));
 
-		while(true) {
-			if(queue.isEmpty()) break;
+
+	private static void solve(int r, int c, int dir) {
+		if(r==N&&c==N) { //마지막칸까지 이동시킨경우
+			cnt++; //cnt++
+			return;
+		}
+		
+		for (int d = 0; d < 3; d++) {
+			if(dir==0&&d==1) continue; //현재 가로로 놓여있다면 가로, 대각선으로 옮기는 경우만 확인한다
+			if(dir==1&&d==0) continue; //현재 세로로 놓여있다면 세로, 대각선으로 옮기는 경우만 확인한다
 			
-			Pipe pipe = queue.poll();
-			int r = pipe.r;
-			int c = pipe.c;
-			int d = pipe.d;
+			int nr = r+dr[d];
+			int nc = c+dc[d];
 			
-			//System.out.println("r: "+r+" c: "+c);
-			
-			
-			if(r==N&&c==N) {
-
-//				for (int[] ia : arr) {
-//					System.out.println(Arrays.toString(ia));
-//				}
-
-				cnt++;
-				
-			}
-			
-			/*
-			 * * 가로 => 가로 or 대각선 
-			 * 세로 => 세로 or 대각선
-			 * 대각선 => 가로 or 세로 or 대각선
-			 * 
-			 * 가로 이동 시 => 우 검사
-			 * 세로 이동 시 => 하 검사
-			 * 대각선 이동시 => 우,하, 우하 검사
-			 */
-
-			//좌, 상, 좌상 검사해서 -1이 있으면
-			//가로, 세로, 대각선인지 알수있다.
-			for (int k = 0; k < 3; k++) {
-				if(d==0&&k==1) continue;
-				if(d==1&&k==0) continue;
-				
-				int nnr = r + dr[k];
-				int nnc = c + dc[k];
-				
-				if(nnr<=N&&nnc<=N) {
-
-					if(k==0||k==1) {
-						if(arr[nnr][nnc]!=1) {
-
-							queue.add(new Pipe(nnr,nnc,k));
-						}
-					}else if(k==2) {
-						if(arr[nnr][nnc]!=1&&arr[nnr-1][nnc]!=1&&arr[nnr][nnc-1]!=1) {
-							
-							queue.add(new Pipe(nnr,nnc,k));
-						}
+			if(nr<=N&&nc<=N) {
+				if(d==0||d==1) {
+					if(arr[nr][nc]==0) {
+						solve(nr,nc,d);
+					}
+				}else if(d==2) { //대각선인 경우 3곳이 벽이 아닌지 확인해야한다.
+					//범위확인은 할 필요없다
+					if(arr[nr][nc]==0&&arr[nr-1][nc]==0&&arr[nr][nc-1]==0) {
+						solve(nr,nc,d);
 					}
 				}
 			}
-
 		}
-	}
-}
-
-class Pipe{
-	int r;
-	int c;
-	int d;
-	public Pipe(int r, int c, int d) {
-		super();
-		this.r = r;
-		this.c = c;
-		this.d = d;
+		
+		
+		
 	}
 	
+	
+	
 }
+

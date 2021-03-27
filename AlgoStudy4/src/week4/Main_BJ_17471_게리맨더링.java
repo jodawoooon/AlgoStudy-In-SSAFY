@@ -20,6 +20,21 @@ public class Main_BJ_17471_게리맨더링 {
 	// 인구 차이의 최솟값 구하기
 	
 	
+	/*부분집합으로 각 구역을 2개의 그룹으로 나눈 후 tgt이 true인 인덱스는 tgtGroup1에, 
+	tgt이 false인 인덱스는 tgtGroup에 add하여 두 개의 선거구 리스트(tgtGroup1, tgtGroup2)를 구했습니다.
+
+	그리고 BFS로 두 선거구가 모두 연결이 되어있는지 확인했습니다.
+
+	그리고 두 그룹 모두 연결이 되어있다면 두 선거구의 인구수의 gap을 구해 최솟값을 계속 갱신시켰습니다.
+	두 선거구를 아예 연결할 수 없다면, 즉 단 한번도 모두 연결된 선거구 부분집합을 구할 수 없다면 -1을 출력해야하므로
+	단 한번이라도 모두 연결된 선거구 부분집합을 구하면 flag를 true로 변경해주었습니다.
+
+
+	BFS 안에서 visited 배열의 크기를 임의의 수로 잘못 설정해서 array index error가 계속 났었습니다 ㅜㅜ
+
+
+	메모리 : 13516kb	시간 : 108ms*/
+	
 	static int N, arr[], ans;
 	static boolean area[][], tgt[], flag;
 	public static void main(String[] args) throws Exception{
