@@ -7,7 +7,17 @@ import java.util.StringTokenizer;
 
 public class Main_BJ_1238_파티 {
 
+/*	최단경로를 구하고 그 중에서 max값을 구하는 문제라 플로이드와샬 알고리즘을 이용해서 풀었습니다.
+	인접행렬 map[][]을 이용해 한 노드에서 갈 수 있는 다른 정점과 가중치를 저장했고,
+	플로이드와샬 알고리즘을 이용해 모든 경로의 최소비용을 구했습니다.
+	N의 값이 커서 처음에는 시간이 굉장히 크게 나왔는데, 가지치기를 최대한 많이 해서 시간을 절반정도로 감소 시켰습니다.
 
+	- 막혔던 부분
+	문제 자체를 잘못 이해해서 계속 안풀렸었네요 ㅜㅜ
+
+	- 결과
+	메모리 35032	시간 800	*/
+	
 	static int N, M,X, map[][], ans;
 	public static void main(String[] args) throws Exception{
 
