@@ -30,20 +30,34 @@ public class Main_BJ_17281_야구 {
 		
 		5,6,7이 1,2,3번 타자 나가고 1번이 4번타자 하면 4점
 		
-		1) 타순 정하기 : 순열
+		1) 모든 경우의 수 타순 정하기 : 순열
 			=> 경기진행
-		2) 최대점수 구하기
+		2) 점수 구하기
 		
 	 */
-	static int N, arr[][], tgt[], ans;
-	static boolean isSelected[];
+	
+/*	순열을 이용해서 타자들의 순서 경우의 수를 구했고, 이 때 1번 선수는 4번타자로 결정되었으므로
+	처음에 먼저 고정을 시켰습니다.
+	이 부분을 놓쳐서 답이 이상하게 나왔었네요..ㅠ
+
+	그리고 그 다음에는 baseball()함수를 통해 점수를 계산했습니다.
+	while문 안에서 3아웃되기 전까지 안타, 2루타, 3루타, 홈런 순서대로
+	조건에 따라 선수들을 이동시키며 score에 점수를 계산하고
+	3진이 되면 ans에 max score을 저장했습니다.
+	처음에는 배열의 0인덱스부터 사용을했는데 헷갈려서 0인덱스를 버리고 1인덱스부터 사용했습니다.
+
+
+	메모리 : 60584kb	시간 : 540ms*/
+	
+	static int N, arr[][], tgt[], ans, score;
+	static boolean isSelected[], base[];
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N= Integer.parseInt(br.readLine());
 		
 		arr = new int[N+1][10]; //1~N이닝, 1~9
 		isSelected = new boolean[10]; //1~9
-		tgt = new int[10];
+		tgt = new int[10]; //타순
 		for (int n = 1; n <= N; n++) {
 			StringTokenizer st = new StringTokenizer(br.readLine()," ");
 			for (int m = 1; m <= 9; m++) {
@@ -51,95 +65,111 @@ public class Main_BJ_17281_야구 {
 			}
 		}
 		
-		//4번타자는 무조건 1번
+		 //1번은 고정
+		tgt[4]=1;
 		isSelected[1] = true;
-
-		perm(1);
+		perm(1); //1~9번
+		
 		System.out.println(ans);
 				
 	}
-	private static void perm(int cnt) {
-		if(cnt==10) {
-			
+	private static void perm(int idx) {
+		if(idx>9) {
+			//타순 다 정해지면
 			baseball();
+			//System.out.println(Arrays.toString(tgt));
 			return;
 		}
-		if(cnt==4) {
-			tgt[4] = 1;
-			perm(cnt+1);
-			return;
-		}
-		for(int i = 1; i<=9;i++) {
-			
-			if(isSelected[i]) continue;
-			tgt[cnt] = i;
-			isSelected[i] = true;
-			perm(cnt+1);
-			isSelected[i] = false;
-			
+		
+		
+		if(idx==4) idx++;
+		
+		for (int i = 2; i <=9 ; i++) { //1번빼고
+
+			if(!isSelected[i]) {
+				isSelected[i]=true;
+				tgt[idx] = i;
+				perm(idx+1);
+				isSelected[i]=false;
+			}
 		}
 	}
 	private static void baseball() {
+		score = 0;
 		int num = 1;
-		int score = 0;
+		int out = 0;
 		
 		for (int n = 1; n <= N; n++) {
-			boolean roo[] = {false,false,false};
-			int out = 0;
+			out = 0;
+			base = new boolean[4];
 			
 			while(true) {
-				if(arr[n][tgt[num]]==0) {
+				if(out==3) break;
+				//3아웃전까지 이닝은 끝나지 않음
+				
+				int playerNum = tgt[num];
+				if(arr[n][playerNum]==1) {//안타
+					//안타 -> 한루씩 
+
+					//3루부터 처리해야함 
+					if(base[3]) { //3루 true면 score++
+						score++;
+						base[3]=false;
+					}
+					
+					for (int i = 2; i >=1 ; i--) {
+						if(base[i]) { //나머지 1,2루는 한칸씩 당기고 1루 true
+							base[i+1]=true;
+							base[i]=false;
+						}
+					}
+					base[1] = true;
+					
+				}else if(arr[n][playerNum]==2) {//2루타
+
+					for (int i = 3; i >= 2; i--) {
+						if(base[i]) {
+							score++;
+							base[i]=false;
+						}
+					}
+					
+					if(base[1]) {
+						base[3]=true;
+						base[1]=false;
+					}
+					base[2] = true;
+				
+				}else if(arr[n][playerNum]==3) {//3루타
+					
+					for (int i = 3; i >= 1; i--) {
+						if(base[i]) {
+							score++;
+							base[i]=false;
+						}
+					}
+					base[3]=true;
+					
+				} else if(arr[n][playerNum]==4) {//3루타
+					score++;
+					for (int i = 3; i >= 1; i--) {
+						if(base[i]) {
+							score++;
+							base[i]=false;
+						}
+					}
+					
+				} else if(arr[n][playerNum]==0) {//아웃
 					out++;
 				}
-				else if(arr[n][tgt[num]]==1) {
-					if(roo[2]==true) {
-						score++;
-						roo[2]=false;
-					}
-					for (int i = 1; i >=0; i--) {
-						if(roo[i]==true) {
-							roo[i+1]=true;
-							roo[i]=false;
-						}
-					}
-					roo[0] = true;
-				}
-				else if(arr[n][tgt[num]]==2) {
-					
-					for (int i = 1; i <=2; i++) {
-						if(roo[i]==true) {
-							score++;
-							roo[i]=false;
-						}
-					}
-					if(roo[0]) {
-						roo[2] =true;
-						roo[0]=false;
-					}
-					roo[1]=true;
-				}else if(arr[n][tgt[num]]==3) {
-					for (int i = 0; i <=2; i++) {
-						if(roo[i]==true) {
-							score++;
-							roo[i]=false;
-						}
-					}
-					roo[2]=true;
-				}else if(arr[n][tgt[num]]==4) {
-					for (int i = 0; i <=2; i++) {
-						if(roo[i]==true) {
-							score++;
-							roo[i]=false;
-						}
-					}
-					score++;
-				}
-				num = (num+1)%10;
-				if(num==0) {num++;}
-				if(out==3)break;
+				
+				num = (num+1)%10; 
+				if(num==0) num++; // num은 1~9
+			
+				
 			}
-
 		}
-		ans= Math.max(ans, score);
+		
+		ans = Math.max(ans,score);
 	}
 }

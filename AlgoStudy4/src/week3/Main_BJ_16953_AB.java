@@ -5,6 +5,16 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main_BJ_16953_AB {
+	
+/*	bfs로 풀었습니다
+	한번은 곱하기 2를 하고
+	한번은 StringBuilder를 이용해 수의 맨 오른쪽에 1을 붙여
+	B값이 나오면 cnt의 최솟값을 구했습니다.
+	B가 되지 못하는 경우엔 return하여 초기값인 -2에 1을 더한 -1이 출력되도록 했습니다.
+	result 변수를 long형이 아닌 int형으로 사용해서 오버플로우가 발생했었습니다.
+
+	메모리 : 23772kb	시간 : 160ms*/
+	
 	static int A,B, min, ans;
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
