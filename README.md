@@ -58,10 +58,10 @@
 | BOJ | 9694 | [무엇을 아느냐가 아니라 누구를 아느냐가 문제다](https://www.acmicpc.net/problem/9694) | 다익스트라| gold4 |
 
 
-### 🚩 week 6
+### 🚩 week 7
 | Type | 문제 | 제목 | 유형 | lank |
 | -- |--| -- |--|--|
 | BOJ | 17071 | [숨바꼭질 5](https://www.acmicpc.net/problem/17071) |  | gold1 |
 | BOJ | 1242 | [소풍](https://www.acmicpc.net/problem/1242) |  | gold2 |
-| BOJ | 12904 | [A와 B](https://www.acmicpc.net/problem/12904) | | gold5 |
+| BOJ | 12904 | [A와 B](https://www.acmicpc.net/problem/12904) |  | gold5 |
 
