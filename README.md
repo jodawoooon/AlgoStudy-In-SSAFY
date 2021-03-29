@@ -63,5 +63,5 @@
 | -- |--| -- |--|--|
 | BOJ | 17071 | [숨바꼭질 5](https://www.acmicpc.net/problem/17071) |  | gold1 |
 | BOJ | 1242 | [소풍](https://www.acmicpc.net/problem/1242) |  | gold2 |
-| BOJ | 12904 | [A와 B](https://www.acmicpc.net/problem/12904) |  | gold5 |
+| BOJ | 12904 | [A와 B](https://www.acmicpc.net/problem/12904) | 문자열 | gold5 |
 
