@@ -16,7 +16,7 @@ public class Main_BJ_12904_A와B_문자열 {
 		
 		
 		while(sbT.length()!=S.length()) {
-			int idx = sbT.toString().length()-1;
+			int idx = sbT.length()-1;
 			
 			if(sbT.charAt(idx)=='A') {
 				sbT.setLength(idx);
