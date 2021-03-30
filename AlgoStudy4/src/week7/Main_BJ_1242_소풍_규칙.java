@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_BJ_1242_소풍2 {
+public class Main_BJ_1242_소풍_규칙 {
 	static int N,K,M,cnt;
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,13 +34,24 @@ public class Main_BJ_1242_소풍2 {
 		// 5 1 3
 		// 3 5
 		// 3
-		//k를 외칠사람을 맨 앞으로 옮기기
-		
 		
 		//ans = 5
 		
-		for (int i = N; i < args.length; i++) {
+		
+		while(true) {
+			cnt++;
+			int idx = K % N;
+			if(idx==0) idx=N;
 			
+			if(idx==M) {
+				System.out.println(cnt);
+				break;
+			}
+			
+			M -= idx;
+			if(M<0) M+=N;
+			
+			N--;
 		}
 		
 	}

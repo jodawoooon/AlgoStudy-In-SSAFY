@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class Main_BJ_17071_숨바꼭질5 {
+public class Main_BJ_17071_숨바꼭질5_시간초과 {
 	static class Edge{
 		int v;
 		int time;
