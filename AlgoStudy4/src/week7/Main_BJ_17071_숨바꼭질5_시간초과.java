@@ -76,8 +76,7 @@ public class Main_BJ_17071_숨바꼭질5_시간초과 {
 			int t = e.time;
 			int k = e.k;
 			int cnt = e.cnt;
-			
-			
+
 			
 			if(v==k) {
 				ans = t;
@@ -93,7 +92,6 @@ public class Main_BJ_17071_숨바꼭질5_시간초과 {
 			
 			int nv = 0;
 			int nt = 0;
-			
 
 				//수빈 - X-1
 				nv = v - 1;
@@ -102,10 +100,6 @@ public class Main_BJ_17071_숨바꼭질5_시간초과 {
 					//System.out.println(nv+" "+(k+cnt));
 					pq.add(new Edge(nv, nt, k+cnt, cnt+1));
 				}
-		
-				
-
-			
 				
 				//수빈 - X+1
 				nv = v + 1;
@@ -119,16 +113,11 @@ public class Main_BJ_17071_숨바꼭질5_시간초과 {
 				//수빈 - 순간이동
 				nv = 2*v;
 				nt = t+1;
-		
 				if(nv<=500000) {
 					//System.out.println(nv+" "+(k+cnt));
 					pq.add(new Edge(nv, nt, k+cnt, cnt+1));
 				}
 				
-				
-			
-
-			
 
 		}
 		System.out.println(ans);
