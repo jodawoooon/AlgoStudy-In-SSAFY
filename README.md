@@ -61,7 +61,16 @@
 ### 🚩 week 7
 | Type | 문제 | 제목 | 유형 | lank |
 | -- |--| -- |--|--|
-| BOJ | 17071 | [숨바꼭질 5](https://www.acmicpc.net/problem/17071) |  | gold1 |
-| BOJ | 1242 | [소풍](https://www.acmicpc.net/problem/1242) |  | gold2 |
+| BOJ | 17071 | [숨바꼭질 5](https://www.acmicpc.net/problem/17071) | BFS | gold1 |
+| BOJ | 1242 | [소풍](https://www.acmicpc.net/problem/1242) | 수학 | gold2 |
 | BOJ | 12904 | [A와 B](https://www.acmicpc.net/problem/12904) | 문자열 | gold5 |
+| BOJ | 16959 | [체스판 여행 1](https://www.acmicpc.net/problem/16959) | BFS | gold1 |
 
+
+### 🚩 week 8
+| Type | 문제 | 제목 | 유형 | lank |
+| -- |--| -- |--|--|
+| BOJ | 16197 | [두 동전](https://www.acmicpc.net/problem/16197) | BFS | gold4 |
+| BOJ | 7579 | [앱](https://www.acmicpc.net/problem/7579) | DP | gold3 |
+| BOJ | 1062 | [가르침](https://www.acmicpc.net/problem/1062) | 문자열 | gold4 |
+| BOJ | 2156 | [포도주 시식](https://www.acmicpc.net/problem/2156) | 문자열 | silver1 |
