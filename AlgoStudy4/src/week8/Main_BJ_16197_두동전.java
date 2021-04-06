@@ -67,22 +67,26 @@ public class Main_BJ_16197_두동전 {
 			Node n1 = queue.poll();
 			int x1 = n1.x;
 			int y1 = n1.y;
-			
+			//1번 동전 위치 : x1,y1
 			
 			Node n2 = queue.poll();
 			int x2 = n2.x;
 			int y2 = n2.y;
-
+			//2번 동전 위치  : x2,y2
+			
+			
 			int cnt = n1.cnt;
 			if(cnt >= 10 ) {
-				//cnt1과 cnt2는 같다.
+				//cnt1과 cnt2는 같다. (동시에 움직인다)
 				System.out.println(-1);
 				return;
 			}
 			
+			
 			for (int d = 0; d < 4; d++) {
 				int nx1 = x1+dx[d];
 				int ny1 = y1+dy[d];
+				
 				int nx2 = x2+dx[d];
 				int ny2 = y2+dy[d];
 				
@@ -94,14 +98,14 @@ public class Main_BJ_16197_두동전 {
 				if(nx2<0||nx2>=N||ny2<0||ny2>=M) outCnt++;
 				
 				if(outCnt==1) {
-					//두 동전 중 하나만 보드에서 떨어트리면
+					//두 동전 중 하나만 보드에서 떨어트리면 종료
 					//cnt 출력
 					System.out.println(cnt+1);
 					return;
 				}
 				
 				if(outCnt==2) continue;
-				
+				//두개의 동전 모두 떨어지면 안됨 => continue
 				
 				
 				//두 동전 다 떨어지지 않았다면 (이동한다)
@@ -111,6 +115,8 @@ public class Main_BJ_16197_두동전 {
 				if(visited[nx1][ny1][nx2][ny2]) continue;
 				visited[nx1][ny1][nx2][ny2] = true;
 				if(arr[nx1][ny1]!=-1&&arr[nx2][ny2]!=-1) {
+					//두 동전의 다음 위치가 모두 벽이 아니면
+					//둘다 한칸씩 이동한다.
 					arr[x1][y1]=0;
 					arr[x2][y2]=0;
 					arr[nx1][ny1]=1;
@@ -118,11 +124,17 @@ public class Main_BJ_16197_두동전 {
 					queue.add(new Node(nx1,ny1,cnt+1));
 					queue.add(new Node(nx2,ny2,cnt+1));
 				}else if(arr[nx1][ny1]!=-1&&arr[nx2][ny2]==-1) {
+					//1번 동전의 다음 위치는 벽이 아니고,
+					//2번 동전의 다음 위치는 벽이면
+					//1번 동전만 이동한다
 					arr[x1][y1]=0;
 					arr[nx1][ny1]=1;
 					queue.add(new Node(nx1,ny1,cnt+1));
 					queue.add(new Node(x2,y2,cnt+1));
 				}else if(arr[nx1][ny1]==-1&&arr[nx2][ny2]!=-1) {
+					//1번 동전의 다음 위치가 벽이고
+					//2번 동전의 다음 위치는 벽이 아니면
+					//2번 동전만 이동한다.
 					arr[x2][y2]=0;
 					arr[nx2][ny2]=1;
 					queue.add(new Node(x1,y1,cnt+1));
