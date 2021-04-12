@@ -74,3 +74,12 @@
 | BOJ | 7579 | [앱](https://www.acmicpc.net/problem/7579) | DP | gold3 |
 | BOJ | 1062 | [가르침](https://www.acmicpc.net/problem/1062) | 문자열 | gold4 |
 | BOJ | 2156 | [포도주 시식](https://www.acmicpc.net/problem/2156) | 문자열 | silver1 |
+
+
+
+### 🚩 week 9
+| Type | 문제 | 제목 | 유형 | lank |
+| -- |--| -- |--|--|
+| BOJ | 2234 | [성곽](https://www.acmicpc.net/problem/2234) | BFS | gold4 |
+| BOJ | 14938 | [서강그라운드](https://www.acmicpc.net/problem/14938) | 그래프 | gold4 |
+| BOJ | 17822 | [원판 돌리기](https://www.acmicpc.net/problem/17822) | 시뮬 | gold3 |
