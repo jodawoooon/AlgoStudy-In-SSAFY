@@ -8,6 +8,23 @@ import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main_BJ_14938_서강그라운드 {
+	
+	/*
+	 *  다익스트라 
+	 *  
+	 *  
+	 *  pq를 이용한 다익스트라로 풀었습니다.
+		for문으로 1~n을 예은이가 내릴 장소(시작점)으로 두었고,
+		다익스트라로 다른 지점까지 수색범위(m)이하로 이동할 수 있는지 확인했습니다.
+		그 결과 weight가 INF가 아니면 이동가능한 정점으로 고려하여
+		해당 정점에서의 아이템수를 누적하여 max아이템수를 구했습니다
+
+
+		- 결과
+		메모리 11804	시간 96
+
+	 * 
+	 */
 	//예은이가 얻을 수 있는 최대 아이템 개수를 출력한다.
 	static int n, m, r, arr[];
 	static int INF = Integer.MAX_VALUE;
