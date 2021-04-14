@@ -73,7 +73,7 @@
 | BOJ | 16197 | [두 동전](https://www.acmicpc.net/problem/16197) | BFS | gold4 |
 | BOJ | 7579 | [앱](https://www.acmicpc.net/problem/7579) | DP | gold3 |
 | BOJ | 1062 | [가르침](https://www.acmicpc.net/problem/1062) | 문자열 | gold4 |
-| BOJ | 2156 | [포도주 시식](https://www.acmicpc.net/problem/2156) | 문자열 | silver1 |
+| BOJ | 2156 | [포도주 시식](https://www.acmicpc.net/problem/2156) | DP | silver1 |
 
 
 
@@ -83,3 +83,4 @@
 | BOJ | 2234 | [성곽](https://www.acmicpc.net/problem/2234) | BFS | gold4 |
 | BOJ | 14938 | [서강그라운드](https://www.acmicpc.net/problem/14938) | 그래프 | gold4 |
 | BOJ | 17822 | [원판 돌리기](https://www.acmicpc.net/problem/17822) | 시뮬 | gold3 |
+| BOJ | 2565 | [전깃줄](https://www.acmicpc.net/problem/2565) | DP | gold3 |
