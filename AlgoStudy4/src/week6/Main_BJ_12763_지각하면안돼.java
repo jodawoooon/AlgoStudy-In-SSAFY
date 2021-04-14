@@ -173,7 +173,7 @@ public class Main_BJ_12763_지각하면안돼 {
 		
 		//N번노드의 값을 출력하면 된다.
 		//이때 T분 이하로 들어올수 있는 경우 중 가장 cost가 낮은 값을출력하면 된다.
-		
+	
 		ans = cost[N];
 		if(ans==Integer.MAX_VALUE) System.out.println(-1);
 		else System.out.println(ans);
