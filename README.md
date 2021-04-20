@@ -84,3 +84,11 @@
 | BOJ | 14938 | [서강그라운드](https://www.acmicpc.net/problem/14938) | 그래프 | gold4 |
 | BOJ | 17822 | [원판 돌리기](https://www.acmicpc.net/problem/17822) | 시뮬 | gold3 |
 | BOJ | 2565 | [전깃줄](https://www.acmicpc.net/problem/2565) | DP | gold3 |
+
+### 🚩 week 10
+| Type | 문제 | 제목 | 유형 | lank |
+| -- |--| -- |--|--|
+| BOJ | 1030 | [프렉탈 평면](https://www.acmicpc.net/problem/1030) | 분할 정복 | gold3 |
+| BOJ | 8972 | [미친 아두이노](https://www.acmicpc.net/problem/8972) | 시뮬 | gold4 |
+| BOJ | 11967 | [불켜기](https://www.acmicpc.net/problem/11967) | 그래프 | gold4 |
+| BOJ | 14719 | [빗물](https://www.acmicpc.net/problem/14719) | 구현 | gold5 |
