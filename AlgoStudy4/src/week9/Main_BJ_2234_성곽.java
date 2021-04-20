@@ -39,6 +39,7 @@ public class Main_BJ_2234_성곽 {
 	static int N, M, map[][], roomCnt, maxRoomSize;
 	static int dx[] = {0,-1,0,1}; //서 북 동 남
 	static int dy[] = {-1,0,1,0};
+	static int bit[] = {1,2,4,8}; 
 	static boolean visited[][];
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -80,6 +81,7 @@ public class Main_BJ_2234_성곽 {
 		
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
+				visited = new boolean[N][M];
 				solve(i,j); //벽을 하나씩 제거해보는 메소드
 			}
 		}
@@ -96,12 +98,15 @@ public class Main_BJ_2234_성곽 {
 	
 
 	private static void solve(int i,int j) {
-		int bit[] = {1,2,4,8}; 
+		
 		for (int x = 0; x <= 3; x++) {
-			visited = new boolean[N][M];
-			map[i][j] -= bit[x]; //벽을 하나씩 제거해본다.
-			bfs(i,j);
-			map[i][j] += bit[x];
+			
+			if((map[i][j] & (1<<x)) != 0){
+				map[i][j] -= bit[x]; //벽을 하나씩 제거해본다.
+				bfs(i,j);
+				map[i][j] += bit[x];
+			}
+			
 		}
 	}
 

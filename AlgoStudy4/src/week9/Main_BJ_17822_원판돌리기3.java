@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_BJ_17822_원판돌리기 {
+public class Main_BJ_17822_원판돌리기3 {
 	/*
 	 * 
 	 * 
@@ -54,8 +54,8 @@ i번째 원판에 적힌 j번째 수의 위치는 (i, j)로 표현
 
 	static int N,M,T,map[][];
 	static Node rotate[];
-	static int dx[] = {0,1}; //상하좌우
-	static int dy[] = {1,0};
+	static int dx[] = {-1,1,0,0}; //상하좌우
+	static int dy[] = {0,0,-1,1};
 
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -224,7 +224,7 @@ i번째 원판에 적힌 j번째 수의 위치는 (i, j)로 표현
 		
 			int x = n.x;
 			int y = n.y;
-			for (int d = 0; d < 2; d++) {
+			for (int d = 0; d < 4; d++) {
 				int nx = x + dx[d];
 				int ny = y + dy[d];
 				
