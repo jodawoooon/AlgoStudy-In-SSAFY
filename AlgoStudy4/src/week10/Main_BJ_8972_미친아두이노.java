@@ -143,8 +143,8 @@ public class Main_BJ_8972_미친아두이노 {
 				}
 			}
 
-//			printMap();
-//			System.out.println("-------------------");
+			printMap();
+			System.out.println("-------------------");
 //			
 		
 		}
