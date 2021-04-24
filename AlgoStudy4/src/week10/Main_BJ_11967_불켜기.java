@@ -40,6 +40,8 @@ public class Main_BJ_11967_불켜기 {
 	}
 	static int N,M, map[][], ans;
 	static ArrayList<Node>[][] list;
+	static boolean visited[][];
+	
 	
 	static int dx[] = {-1,1,0,0};
 	static int dy[] = {0,0,-1,1};
@@ -53,7 +55,9 @@ public class Main_BJ_11967_불켜기 {
 		
 		ans = 1;
 		map = new int[N+1][N+1];
+		visited = new boolean[N+1][N+1];
 		list = new ArrayList[N+1][N+1];
+		
 		for (int i = 1; i <= N; i++) {
 			for (int j = 1; j <=N; j++) {
 				list[i][j] = new ArrayList<>();
@@ -87,8 +91,6 @@ public class Main_BJ_11967_불켜기 {
 
 	private static void bfs(int i, int j) {
 		Queue<Node> queue = new LinkedList<>();
-		boolean visited[][] = new boolean[N+1][N+1];
-		
 		map[i][j] = 1; //처음 위치 불 밝히기
 		visited[i][j] = true;
 		
@@ -116,38 +118,51 @@ public class Main_BJ_11967_불켜기 {
 				ans++; //불켜진 방 개수 ++
 				
 				//이동가능한 방인지 확인한다
-				
-				for (int d = 0; d < 4; d++) {
-					int nnx = nx + dx[d];
-					int nny = ny + dy[d];
-					
-					if(nnx<=0||nny<=0||nnx>N||nny>N) continue;
-					if(visited[nnx][nny]) {
-						//내가 불 킨 곳 주변에 방문가능하면 => (nx,ny)에 방문 가능하다
-						queue.add(new Node(nnx,nny)); //방문가능한곳이면 q에 넣는다
-						break;
-					}
-					
+				if(canGo(nx,ny)) {
+					queue.add(new Node(nx,ny)); //방문가능한곳이면 q에 넣는다
 				}
 				
 			}
 			
-			
+		
 			//이동 ( 불 켜진 곳만 이동 가능 )
 			for (int d = 0; d < 4; d++) {
 				int nx = x + dx[d];
 				int ny = y + dy[d];
-				if(nx<=0||ny<=0||nx>N||ny>N) continue;
 				
-				
-				
+				if(!isIn(nx,ny)) continue;
 				if(visited[nx][ny]) continue;
 				if(map[nx][ny]==0) continue;
 				
 				//불 켜져 있는데 내가 간 적 없으면
-				visited[nx][ny] = true; //이
+				visited[nx][ny] = true; //이동
 				queue.add(new Node(nx,ny));
 			}
+			
+			
 		}
+	}
+
+	private static boolean canGo(int nx, int ny) {
+		
+		for (int d = 0; d < 4; d++) {
+			int nnx = nx + dx[d];
+			int nny = ny + dy[d];
+			
+			if(!isIn(nnx,nny)) continue;
+			if(visited[nnx][nny]) {
+				//내가 불 킨 곳 주변에 방문가능하면 => (nx,ny)에 방문 가능하다
+                visited[nx][ny] = true; 						
+					
+				return true;
+			}
+			
+		}
+		return false;
+	}
+
+	private static boolean isIn(int nx, int ny) {
+		if(nx<=0||ny<=0||nx>N||ny>N) return false;
+		return true;
 	}
 }
