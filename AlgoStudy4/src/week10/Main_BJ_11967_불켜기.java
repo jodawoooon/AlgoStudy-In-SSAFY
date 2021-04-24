@@ -99,19 +99,19 @@ public class Main_BJ_11967_불켜기 {
 				ans++; //불켜진 방 개수 ++
 				
 				//이동가능한 방인지 확인한다
-				
-				for (int d = 0; d < 4; d++) {
-					int nnx = nx + dx[d];
-					int nny = ny + dy[d];
-					
-					if(nnx<=0||nny<=0||nnx>N||nny>N) continue;
-					if(visited[nnx][nny]) {
-						//내가 불 킨 곳 주변에 방문가능하면 => (nx,ny)에 방문 가능하다
-						queue.add(new Node(nnx,nny)); //방문가능한곳이면 q에 넣는다
-						break;
-					}
-					
-				}
+//				
+//				for (int d = 0; d < 4; d++) {
+//					int nnx = nx + dx[d];
+//					int nny = ny + dy[d];
+//					
+//					if(nnx<=0||nny<=0||nnx>N||nny>N) continue;
+//					if(visited[nnx][nny]) {
+//						//내가 불 킨 곳 주변에 방문가능하면 => (nx,ny)에 방문 가능하다
+//						queue.add(new Node(nnx,nny)); //방문가능한곳이면 q에 넣는다
+//						break;
+//					}
+//					
+//				}
 				
 			}
 			
