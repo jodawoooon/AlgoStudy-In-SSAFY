@@ -11,6 +11,23 @@ import java.util.StringTokenizer;
 
 public class Main_BJ_11967_불켜기 {
 
+/*	- 알고리즘
+	BFS
+	
+	- 과정
+	먼저, 2차원 ArrayList에 각 방에서 킬 수 있는 방들의 정보를 저장했습니다
+
+	그리고 (1,1)에서 시작하여 
+	list에서 정보를 가져와서 해당 좌표의 방의 불을 킵니다.
+	그리고 내가 이동 가능한 방인지 확인하고 (그 방 주변에 방문이 가능한지 확인, 즉 visit=true인지 확인), 방문 가능하다면 queue에 넣습니다
+	그 후 4방탐색으로 불 켜진 방으로 이동합니다.
+
+	- 결과
+	메모리 23504KB	시간 240ms*/
+	
+	
+	
+	
 	static class Node{
 		int x, y;
 
@@ -99,19 +116,19 @@ public class Main_BJ_11967_불켜기 {
 				ans++; //불켜진 방 개수 ++
 				
 				//이동가능한 방인지 확인한다
-//				
-//				for (int d = 0; d < 4; d++) {
-//					int nnx = nx + dx[d];
-//					int nny = ny + dy[d];
-//					
-//					if(nnx<=0||nny<=0||nnx>N||nny>N) continue;
-//					if(visited[nnx][nny]) {
-//						//내가 불 킨 곳 주변에 방문가능하면 => (nx,ny)에 방문 가능하다
-//						queue.add(new Node(nnx,nny)); //방문가능한곳이면 q에 넣는다
-//						break;
-//					}
-//					
-//				}
+				
+				for (int d = 0; d < 4; d++) {
+					int nnx = nx + dx[d];
+					int nny = ny + dy[d];
+					
+					if(nnx<=0||nny<=0||nnx>N||nny>N) continue;
+					if(visited[nnx][nny]) {
+						//내가 불 킨 곳 주변에 방문가능하면 => (nx,ny)에 방문 가능하다
+						queue.add(new Node(nnx,nny)); //방문가능한곳이면 q에 넣는다
+						break;
+					}
+					
+				}
 				
 			}
 			
@@ -128,7 +145,7 @@ public class Main_BJ_11967_불켜기 {
 				if(map[nx][ny]==0) continue;
 				
 				//불 켜져 있는데 내가 간 적 없으면
-				visited[nx][ny] = true; //이동
+				visited[nx][ny] = true; //이
 				queue.add(new Node(nx,ny));
 			}
 		}
