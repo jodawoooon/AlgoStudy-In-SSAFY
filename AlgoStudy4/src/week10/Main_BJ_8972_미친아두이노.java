@@ -143,8 +143,8 @@ public class Main_BJ_8972_미친아두이노 {
 				}
 			}
 
-			printMap();
-			System.out.println("-------------------");
+			//printMap();
+			//System.out.println("-------------------");
 //			
 		
 		}
@@ -156,11 +156,15 @@ public class Main_BJ_8972_미친아두이노 {
 	}
 
 	private static void printMap() { //map print 메소드
+		StringBuilder sb = new StringBuilder();
 		for (int r = 0; r < R; r++) {
 			for (int c = 0; c < C; c++) {
-				System.out.print(map[r][c]);
-			}System.out.println();
+				sb.append(map[r][c]);
+			}sb.append("\n");
 		}
+		
+		sb.setLength(sb.length()-1);
+		System.out.println(sb.toString());
 	}
 	
 	private static int getDistance(int startR, int startC, int nnr, int nnc) {
