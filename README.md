@@ -92,3 +92,10 @@
 | BOJ | 8972 | [미친 아두이노](https://www.acmicpc.net/problem/8972) | 시뮬 | gold4 |
 | BOJ | 11967 | [불켜기](https://www.acmicpc.net/problem/11967) | 그래프 | gold4 |
 | BOJ | 14719 | [빗물](https://www.acmicpc.net/problem/14719) | 구현 | gold5 |
+
+### 🚩 week 11
+| Type | 문제 | 제목 | 유형 | lank |
+| -- |--| -- |--|--|
+| BOJ | 1915 | [가장 큰 정사각형](https://www.acmicpc.net/problem/1915) | dp | gold5 |
+| BOJ | 19236 | [청소년 상어](https://www.acmicpc.net/problem/19236) | 시뮬 | gold2 |
+
