@@ -24,6 +24,8 @@ public class Main_BJ_13335_트럭 {
 			weight[i] = Integer.parseInt(st.nextToken());
 		}
 		
+		//트럭의 순서는 바꿀 수 없다
+		
 		
 	}
 }
