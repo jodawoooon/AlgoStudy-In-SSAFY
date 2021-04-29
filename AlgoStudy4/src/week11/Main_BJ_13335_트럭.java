@@ -32,7 +32,7 @@ public class Main_BJ_13335_트럭 {
 		int time = 0;
 	
 		
-		map = new int[N];
+		map = new int[W];
 		while(true) {
 			time++;
 			
