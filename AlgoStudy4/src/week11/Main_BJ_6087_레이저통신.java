@@ -8,12 +8,6 @@ import java.util.StringTokenizer;
 
 public class Main_BJ_6087_레이저통신 {
 	
-	// W×H 크기의 지도
-	// 지도의 각 칸은 빈 칸이거나 벽이며, 두 칸은 'C'로 표시되어 있는 칸이다.
-	// 'C'로 표시되어 있는 두 칸을 레이저로 통신하기 위해서 설치해야 하는 거울 개수의 최솟값
-	// C에서만 발사할 수 있고, 빈 칸에 거울('/', '\')을 설치해서 방향을 90도 회전시킬 수 있다. 
-	
-	// '/' ; 왼쪽반사, '\' ; 오른쪽반사
 	static int W,H, point[][], ans;
 	static char map[][];
 	static int dx[] = {-1,0,1,0}; //90도씩 우향우 -> 순서 : 상 우 하 좌 
@@ -24,6 +18,16 @@ public class Main_BJ_6087_레이저통신 {
 		int x,y;
 		int dir;
 		int cnt;
+
+
+		
+		public Node(int x, int y, int cnt) {
+			super();
+			this.x = x;
+			this.y = y;
+			this.cnt = cnt;
+		}
+
 
 
 		public Node(int x, int y, int dir, int cnt) {
@@ -61,52 +65,52 @@ public class Main_BJ_6087_레이저통신 {
 		bfs();
 		
 		
-		System.out.println(ans);
+		System.out.println(ans-1);
 		
 	}
 	private static void bfs() {
 		Queue<Node> queue = new LinkedList<>();
-		boolean visited[][][] = new boolean[H][W][4];
+		//boolean visited[][][] = new boolean[H][W][4];
+		boolean visited[][] = new boolean[H][W];
 		
-		//4방 출발
-		for (int d = 0; d < 4; d++) {
-			queue.add(new Node(point[0][0], point[0][1],d,0));
-			visited[point[0][0]][point[0][1]][d]=true;
-		}
+
 		
-		while(true) {
+		queue.add(new Node(point[0][0], point[0][1],0));
+		visited[point[0][0]][point[0][1]] = true;
+		
+		while(!queue.isEmpty()) {
 			Node n = queue.poll();
 			int x = n.x;
 			int y = n.y;
-			int d = n.dir;
-			//System.out.println("===============");
-			//System.out.println(x+" "+y+" "+d+" "+n.cnt);
 			
 			if(x==point[1][0]&&y==point[1][1]) { //최종위치 도착하면
 				//System.out.println(n.cnt);
-				//ans = Math.min(ans, n.cnt); //거울몇개썼는지 갱신
+				ans = Math.min(ans, n.cnt); //거울몇개썼는지 갱신
 				break;
 			}
 			
-			int nx = x + dx[d];
-			int ny = y + dy[d];
-			
-			if(!isIn(nx,ny)) continue;
-			
-			if(visited[nx][ny][d]) continue;
-			if(map[nx][ny]=='*') continue;
-			visited[nx][ny][d] = true;
-			
-			//System.out.println(nx+" "+ny+" "+d+" "+n.cnt);
-			//System.out.println(map[nx][ny]);
-//			System.out.println("===============");
-			
-			
-			if(map[nx][ny]=='C') ans = Math.min(ans, n.cnt);
-			queue.add(new Node(nx,ny,d,n.cnt)); //그냥 직진
-		
-			queue.add(new Node(nx,ny,(d+1)%4, n.cnt+1)); //오른쪽 회전 거울 세우기
-			queue.add(new Node(nx,ny,(d+3)%4, n.cnt+1)); //왼쪽회전
+			for (int d = 0; d < 4; d++) {
+				int nx = x;
+				int ny = y;
+				
+				while(true) {
+					//벽을 만나기 전까지 or 맵을 벗어나기 전까지
+					//if(visited[nx][ny]) break;
+					
+					if(!isIn(nx,ny)) break;
+					if(map[nx][ny]=='*') break;
+					
+					if(!visited[nx][ny]) {
+						visited[nx][ny]=true;
+						queue.add(new Node(nx,ny,n.cnt+1));
+					}
+
+					nx+=dx[d];
+					ny+=dy[d];
+				}
+
+			}
+
 				
 		}
 		
