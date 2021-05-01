@@ -6,6 +6,23 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Main_BJ_13335_트럭2 {
+	
+/*	
+	트럭의 무게를 저장하는 배열(truck), 
+	다리 위의 상태를 저장하는 배열(bridge)
+	총 2가지 배열을 사용했습니다.
+
+	현재 다리 위에 올려야 하는 타겟 트럭 무게 tgtW에 대해서
+	다리의 최대 하중을 만족하면서, 다리 위에 올릴 수 있을 때 까지 while문을 돌렸습니다.
+	while문 안에서는 time을 1초씩 증가시키면서 트럭을 한 칸씩 앞으로 이동시켰습니다.
+	다리 위에 올릴 수 있다면, 맨 뒤에 트럭을 집어넣고 while문을 종료합니다.
+	위와 같은 과정을 모든 트럭에 대해 반복합니다.
+
+	- 결과
+	메모리 11872KB	시간 100ms
+	
+	*/
+	
 	static int N, W, L, truck[], bridge[];
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
