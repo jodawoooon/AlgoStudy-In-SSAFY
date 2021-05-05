@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_BJ_12608_상어초등학교 {
+public class Main_BJ_12608_S1_상어초등학교 {
 /*
 	주어진 조건에 맞게 차례대로 구현하여 풀었습니다.
 
