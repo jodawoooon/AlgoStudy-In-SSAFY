@@ -96,6 +96,15 @@
 ### 🚩 week 11
 | Type | 문제 | 제목 | 유형 | lank |
 | -- |--| -- |--|--|
-| BOJ | 1915 | [가장 큰 정사각형](https://www.acmicpc.net/problem/1915) | dp | gold5 |
-| BOJ | 19236 | [청소년 상어](https://www.acmicpc.net/problem/19236) | 시뮬 | gold2 |
+| BOJ | 1915 | [가장 큰 정사각형](https://www.acmicpc.net/problem/1915) | dp | silver1 |
+| BOJ | 13335 | [트럭](https://www.acmicpc.net/problem/13335) | 시뮬 | silver1 |
+| BOJ | 3709 | [레이저빔은 어디로](https://www.acmicpc.net/problem/1915) | dfs | gold4 |
+| BOJ | 6087 | [레이저통신](https://www.acmicpc.net/problem/6087) | bfs | gold4 |
 
+### 🚩 week 12
+| Type | 문제 | 제목 | 유형 | lank |
+| -- |--| -- |--|--|
+| BOJ | 12608 | [상어 초등학교](https://www.acmicpc.net/problem/12608) | 시뮬 | silver1 |
+| BOJ | 10836 | [여왕벌](https://www.acmicpc.net/problem/10836) | 시뮬 | gold4 |
+| BOJ | 1520 | [내리막길](https://www.acmicpc.net/problem/1520) | dp | gold4 |
+| BOJ | 11559 | [Puyo Puyo](https://www.acmicpc.net/problem/11559) | 시뮬 | gold5 |
