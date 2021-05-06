@@ -7,7 +7,26 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main_BJ_11559_G5_PuyoPuyo {
+/*	
+	BFS
+	
+	터트릴 뿌요 그룹이 없을때까지 while문을 반복해
+	주어진 조건대로 뿌요뿌요 게임을 구현했습니다.
 
+	먼저 2중 for문에서 중복되지않게 bfs를 돌려서
+	같은색 뿌요가 4개이상 연결되어있는 list를 찾았습니다.
+	그리고 터트린 뒤에는 cnt를 증가시켜 while문을 탈출할 수 있는 변수를 설정했습니다
+
+	터트릴 수 있는 그룹을 다 터트린 뒤에는 1연쇄씩 증가시켰고 (ans++)
+
+	이 후 중력에 의해 공중에 떠있는 뿌요들은 다 아래로 떨어트려주었습니다.
+	이 과정은 마찬가지로 2중 for문과 while문을 이용해
+	떨어질 수 있는 곳까지 끌어 내리는 형태로 구현했습니다
+
+
+	- 결과
+	11604	80
+	*/
 	static int dx[] = {-1,1,0,0};
 	static int dy[] = {0,0,-1,1};
 	static int ans;
