@@ -11,7 +11,6 @@ public class Main_BJ_1520_G4_내리막길 {
 	 *  */
 	static int map[][], M, N, dp[][];
 	static boolean visited[][];
-	static long ans;
 	static int dx[] = { -1, 1, 0, 0 }; // 4방탐색을 하기위한 방향배열
 	static int dy[] = { 0, 0, -1, 1 };
 
@@ -34,8 +33,9 @@ public class Main_BJ_1520_G4_내리막길 {
 			}
 		}
 		
+		dfs(0,0);
 		
-		System.out.println(dfs(0,0)); // 경로의 개수
+		System.out.println(dp[0][0]); // 0,0부터 M-1,N-1까지 가는 경우의수
 	}
 
 
@@ -47,22 +47,20 @@ public class Main_BJ_1520_G4_내리막길 {
 		
 		if(dp[x][y]== -1) {
 			//방문한적 없으면
-			
 			dp[x][y] = 0; //방문한 적 없다 => 현재 갯수 0개
-			
-			for (int d = 0; d < 4; d++) {
-				int nx = x + dx[d];
-				int ny = y + dy[d];
-				
-				if(!isIn(nx,ny)) continue;
-				if(map[nx][ny] >= map[x][y]) continue;
-				
-				dp[x][y] += dfs(nx,ny); //끝까지 도착하면 1리턴 => 1씩 증가
-			}
 		}
 		
-	
-		//(x,y)에 방문한적있으면 => dp배열에 저장값 있다면 dp[x][y] 리턴
+		for (int d = 0; d < 4; d++) {
+			int nx = x + dx[d];
+			int ny = y + dy[d];
+			
+			if(!isIn(nx,ny)) continue;
+			if(map[nx][ny] >= map[x][y]) continue; //내리막길이여만 갈수있음
+			
+			if(dp[nx][ny] != -1) dp[x][y] += dp[nx][ny]; //(nx,ny)가 방문한곳이면 
+			else dp[x][y] += dfs(nx,ny); //아니면 dfs. 이때 끝까지 도착하면 1리턴 => 1씩 증가
+		}
+
 		return dp[x][y];
 		
 	}
