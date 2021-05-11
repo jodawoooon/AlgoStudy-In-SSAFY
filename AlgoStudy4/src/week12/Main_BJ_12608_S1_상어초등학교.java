@@ -28,7 +28,7 @@ public class Main_BJ_12608_S1_상어초등학교 {
 	static ArrayList<Integer>[] list;
 	static int dx[]= {-1,1,0,0};
 	static int dy[]= {0,0,-1,1};
-	static int satArr[] = {0,1,10,100,1000};
+	//static int satArr[] = {0,1,10,100,1000};
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -121,7 +121,7 @@ public class Main_BJ_12608_S1_상어초등학교 {
 					if(list[map[x][y]].contains(map[nx][ny])) cnt++;
 					//인접한 칸에 좋아하는 학생 있으면 cnt++
 				}
-				ans += satArr[cnt];
+				ans += Math.pow(10, cnt-1);
 			}
 		}
 		
