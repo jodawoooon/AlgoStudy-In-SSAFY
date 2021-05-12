@@ -27,7 +27,7 @@ public class Main_BJ_15787_S2_기차가_bit {
 			*/
 	
 	static int N,M, ans;
-	static boolean map[][];
+	static int map[];
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -36,7 +36,7 @@ public class Main_BJ_15787_S2_기차가_bit {
 		N = Integer.parseInt(st.nextToken()); //기차의 수
 		M = Integer.parseInt(st.nextToken()); //명령의 수
 		
-		map = new boolean[N+1][21]; //1~N개의 기차. 각 기차에는 20개의 좌석
+		map = new int[N+1]; //1~N개의 기차. 각 기차에는 20개의 좌석
 		
 		for (int m = 0; m < M; m++) {
 			st = new StringTokenizer(br.readLine());
@@ -47,35 +47,31 @@ public class Main_BJ_15787_S2_기차가_bit {
 				int i = Integer.parseInt(st.nextToken());
 				int x = Integer.parseInt(st.nextToken());
 				
-				//i번째 기차에 x번째 좌석에 사람을 태워라
-				if(map[i][x]) continue; //사람 이미 있으면 continue
-				map[i][x] = true;
+				//i번째 기차에 x번째 좌석에 사람을 태워라. 사람 이미 있으면 continue => or
+				map[i] = map[i] | (1<<x); 
 				
 			}else if(cmd==2) {
 				int i = Integer.parseInt(st.nextToken());
 				int x = Integer.parseInt(st.nextToken());
 				
-				//i번째 기차에 x번째 좌석 사람 하차
-				if(!map[i][x]) continue; //사람 없으면 continue
-				map[i][x] = false;
+				//i번째 기차에 x번째 좌석 사람 하차 => and
+				map[i] = map[i] & ~(1<<x);
 				
 			}else if(cmd==3) {
 				int i = Integer.parseInt(st.nextToken());
 				
 				//모두 한칸씩 뒤로감.
-				for (int j = 20; j > 1; j--) {
-					map[i][j] = map[i][j-1];
-				}
-				map[i][1] = false;
+				map[i] = map[i] << 1;
+				//만약 20번째 사람있으면 하차
+				map[i] = map[i] & ((1<<21)-1);
 				
 			}else if(cmd==4) {
 				int i = Integer.parseInt(st.nextToken());
 				
 				//모두 한칸씩 앞으로
-				for (int j = 1; j < 20; j++) {
-					map[i][j] = map[i][j+1];
-				}
-				map[i][20] = false;
+				map[i] = map[i] >> 1;
+				map[i] = map[i] & ~1;
+				
 			}
 			
 			
@@ -84,32 +80,14 @@ public class Main_BJ_15787_S2_기차가_bit {
 		
 		
 		//M 명령 후 1번기차부터 순서대로 은하수를 건넌다
-		ArrayList<boolean[]> checkList = new ArrayList<>();
-		
+		boolean visited[] = new boolean[1 << 21];
 		for (int i = 1; i <= N; i++) {
-			boolean flag = false;
-			for (int j = 0; j < checkList.size(); j++) {
-				boolean[] tmp = checkList.get(j);
-				
-				int cnt = 0;
-				for (int k = 1; k <= 20; k++) {
-					if(map[i][k]==tmp[k]) cnt++;
-				}
-				
-				//System.out.println(cnt);
-				if(cnt==20) {
-					flag = true;
-					break;
-				}
-				
-			}
 			
-			if(flag) continue;
+			if(visited[map[i]]) continue;
 			else {
-				checkList.add(map[i]);
 				ans++;
+				visited[map[i]]=true;
 			}
-			
 		}
 		
 		
