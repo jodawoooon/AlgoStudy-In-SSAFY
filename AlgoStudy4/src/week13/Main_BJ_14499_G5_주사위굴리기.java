@@ -50,6 +50,8 @@ public class Main_BJ_14499_G5_주사위굴리기 {
 			int ny = y + dy[k];
 			
 			if(!isIn(nx,ny)) continue;
+			// 바깥으로 이동시키려고 하는 경우에는 해당 명령을 무시해야 하며, 출력도 하면 안 된다. -> continue
+			
 			
 			//2. 주사위 굴리기
 			int tmp[] = new int[7];
@@ -58,15 +60,16 @@ public class Main_BJ_14499_G5_주사위굴리기 {
 			}
 			//임시 주사위 복사
 			
-			//동,서,남,북에 따라 다름
+			//동,서,남,북에 따라 굴러가는 형태가 다름
+			
 			switch(k) {
-			case 1: //동쪽
+			case 1: //동쪽 
 				dice[1] = tmp[4];
 				dice[4] = tmp[6];
 				dice[3] = tmp[1];
 				dice[6] = tmp[3];
 				break;
-			case 2:
+			case 2: //서
 				dice[1] = tmp[3];
 				dice[4] = tmp[1];
 				dice[3] = tmp[6];
@@ -78,7 +81,7 @@ public class Main_BJ_14499_G5_주사위굴리기 {
 				dice[5] = tmp[6];
 				dice[6] = tmp[2];
 				break;
-			case 4:
+			case 4: //남
 				dice[1] = tmp[2];
 				dice[2] = tmp[6];
 				dice[5] = tmp[1];
@@ -95,6 +98,7 @@ public class Main_BJ_14499_G5_주사위굴리기 {
 			}
 			
 			System.out.println(dice[1]);
+			//주사위가 이동했을 때 마다 상단에 쓰여 있는 값을 출력
 			
 			x = nx; //현좌표 변경
 			y = ny;
