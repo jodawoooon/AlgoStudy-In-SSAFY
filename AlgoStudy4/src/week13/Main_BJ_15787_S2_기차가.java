@@ -8,6 +8,12 @@ import java.util.StringTokenizer;
 
 public class Main_BJ_15787_S2_기차가 {
 	/*
+	 * 
+	 * 70844	1036
+	 * 
+	 * 
+	 * 
+	 * 
 	N개의 기차. (1번~N번)
 	기차에는 20개의 일렬로 된 좌석이 있음. 한좌석에 사람 한명 탐
 	
