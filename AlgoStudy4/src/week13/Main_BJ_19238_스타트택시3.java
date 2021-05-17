@@ -157,25 +157,31 @@ public class Main_BJ_19238_스타트택시3 {
 		ArrayList<Point> list = new ArrayList<>();
 		
 		while(!queue.isEmpty()) {
-			Node n = queue.poll();
-			int x = n.x;
-			int y = n.y;
-			int dis = n.dis;
 			
-			if(energy-dis<0) break; //연료없으면 종료
-			if(map[x][y]>1) { //이동중에 만난 승객 (승객의 idx는 2부터)
-				list.add(new Point(map[x][y], x,y,dis)); //리스트에 저장
-			}
-			
-			for (int d = 0; d < 4; d++) {
-				int nx = x + dx[d];
-				int ny = y + dy[d];
-				if(!isIn(nx,ny)) continue;
-				if(visited[nx][ny]) continue;
-				if(map[nx][ny]==1) continue;
+			int size = queue.size();
+			for (int i = 0; i < size; i++) {
+				Node n = queue.poll();
+				int x = n.x;
+				int y = n.y;
+				int dis = n.dis;
 				
-				visited[nx][ny] = true;
-				queue.add(new Node(nx,ny,dis+1));
+				if(energy-dis<0) break; //연료없으면 종료
+				if(map[x][y]>1) { //이동중에 만난 승객 (승객의 idx는 2부터)
+					list.add(new Point(map[x][y], x,y,dis)); //리스트에 저장
+					
+				}
+				
+				for (int d = 0; d < 4; d++) {
+					int nx = x + dx[d];
+					int ny = y + dy[d];
+					if(!isIn(nx,ny)) continue;
+					if(visited[nx][ny]) continue;
+					if(map[nx][ny]==1) continue;
+					
+					visited[nx][ny] = true;
+					queue.add(new Node(nx,ny,dis+1));
+				}
+				
 			}
 			
 		}
